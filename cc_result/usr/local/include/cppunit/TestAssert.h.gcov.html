@@ -1,0 +1,504 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - /usr/local/include/cppunit/TestAssert.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">usr/local/include/cppunit</a> - TestAssert.h<span style="font-size: 80%;"> (source / <a href="TestAssert.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-10-17 10:35:57</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef CPPUNIT_TESTASSERT_H</a>
+<span class="lineNum">       2 </span>            : #define CPPUNIT_TESTASSERT_H
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span>            : #include &lt;cppunit/Portability.h&gt;
+<span class="lineNum">       5 </span>            : #include &lt;cppunit/Exception.h&gt;
+<span class="lineNum">       6 </span>            : #include &lt;cppunit/Asserter.h&gt;
+<span class="lineNum">       7 </span>            : #include &lt;cppunit/portability/Stream.h&gt;
+<span class="lineNum">       8 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">       9 </span>            : #include &lt;float.h&gt; // For struct assertion_traits&lt;double&gt;
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : CPPUNIT_NS_BEGIN
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : /*! \brief Traits used by CPPUNIT_ASSERT_EQUAL().
+<span class="lineNum">      16 </span>            :  *
+<span class="lineNum">      17 </span>            :  * Here is an example of specialising these traits: 
+<span class="lineNum">      18 </span>            :  *
+<span class="lineNum">      19 </span>            :  * \code
+<span class="lineNum">      20 </span>            :  * template&lt;&gt;
+<span class="lineNum">      21 </span>            :  * struct assertion_traits&lt;std::string&gt;   // specialization for the std::string type
+<span class="lineNum">      22 </span>            :  * {
+<span class="lineNum">      23 </span>            :  *   static bool equal( const std::string&amp; x, const std::string&amp; y )
+<span class="lineNum">      24 </span>            :  *   {
+<span class="lineNum">      25 </span>            :  *     return x == y;
+<span class="lineNum">      26 </span>            :  *   }
+<span class="lineNum">      27 </span>            :  * 
+<span class="lineNum">      28 </span>            :  *   static std::string toString( const std::string&amp; x )
+<span class="lineNum">      29 </span>            :  *   {
+<span class="lineNum">      30 </span>            :  *     std::string text = '&quot;' + x + '&quot;';    // adds quote around the string to see whitespace
+<span class="lineNum">      31 </span>            :  *     OStringStream ost;
+<span class="lineNum">      32 </span>            :  *     ost &lt;&lt; text;
+<span class="lineNum">      33 </span>            :  *     return ost.str();
+<span class="lineNum">      34 </span>            :  *   }
+<span class="lineNum">      35 </span>            :  * };
+<span class="lineNum">      36 </span>            :  * \endcode
+<span class="lineNum">      37 </span>            :  */
+<span class="lineNum">      38 </span>            : template &lt;class T&gt;
+<a name="39"><span class="lineNum">      39 </span>            : struct assertion_traits </a>
+<span class="lineNum">      40 </span>            : {  
+<span class="lineNum">      41 </span><span class="lineCov">         44 :     static bool equal( const T&amp; x, const T&amp; y )</span>
+<span class="lineNum">      42 </span>            :     {
+<span class="lineNum">      43 </span><span class="lineCov">         44 :         return x == y;</span>
+<a name="44"><span class="lineNum">      44 </span>            :     }</a>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     static std::string toString( const T&amp; x )</span>
+<span class="lineNum">      47 </span>            :     {
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         OStringStream ost;</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :         ost &lt;&lt; x;</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         return ost.str();</span>
+<span class="lineNum">      51 </span>            :     }
+<span class="lineNum">      52 </span>            : };
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : /*! \brief Traits used by CPPUNIT_ASSERT_DOUBLES_EQUAL(). 
+<span class="lineNum">      56 </span>            :  * 
+<span class="lineNum">      57 </span>            :  * This specialisation from @c struct @c assertion_traits&lt;&gt; ensures that 
+<span class="lineNum">      58 </span>            :  * doubles are converted in full, instead of being rounded to the default 
+<span class="lineNum">      59 </span>            :  * 6 digits of precision. Use the system defined ISO C99 macro DBL_DIG 
+<span class="lineNum">      60 </span>            :  * within float.h is available to define the maximum precision, otherwise
+<span class="lineNum">      61 </span>            :  * use the hard-coded maximum precision of 15.
+<span class="lineNum">      62 </span>            :  */
+<span class="lineNum">      63 </span>            : template &lt;&gt;
+<span class="lineNum">      64 </span>            : struct assertion_traits&lt;double&gt;
+<span class="lineNum">      65 </span>            : {  
+<span class="lineNum">      66 </span>            :     static bool equal( double x, double y )
+<span class="lineNum">      67 </span>            :     {
+<span class="lineNum">      68 </span>            :         return x == y;
+<span class="lineNum">      69 </span>            :     }
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            :     static std::string toString( double x )
+<span class="lineNum">      72 </span>            :     {
+<span class="lineNum">      73 </span>            : #ifdef DBL_DIG
+<span class="lineNum">      74 </span>            :        const int precision = DBL_DIG;
+<span class="lineNum">      75 </span>            : #else
+<span class="lineNum">      76 </span>            :        const int precision = 15;
+<span class="lineNum">      77 </span>            : #endif  // #ifdef DBL_DIG
+<span class="lineNum">      78 </span>            :        char buffer[128];
+<span class="lineNum">      79 </span>            : #ifdef __STDC_SECURE_LIB__ // Use secure version with visual studio 2005 to avoid warning.
+<span class="lineNum">      80 </span>            :        sprintf_s(buffer, sizeof(buffer), &quot;%.*g&quot;, precision, x); 
+<span class="lineNum">      81 </span>            : #else   
+<span class="lineNum">      82 </span>            :        sprintf(buffer, &quot;%.*g&quot;, precision, x); 
+<span class="lineNum">      83 </span>            : #endif
+<span class="lineNum">      84 </span>            :        return buffer;
+<span class="lineNum">      85 </span>            :     }
+<span class="lineNum">      86 </span>            : };
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            : /*! \brief (Implementation) Asserts that two objects of the same type are equals.
+<span class="lineNum">      90 </span>            :  * Use CPPUNIT_ASSERT_EQUAL instead of this function.
+<span class="lineNum">      91 </span>            :  * \sa assertion_traits, Asserter::failNotEqual().
+<a name="92"><span class="lineNum">      92 </span>            :  */</a>
+<span class="lineNum">      93 </span>            : template &lt;class T&gt;
+<span class="lineNum">      94 </span><span class="lineCov">         44 : void assertEquals( const T&amp; expected,</span>
+<span class="lineNum">      95 </span>            :                    const T&amp; actual,
+<span class="lineNum">      96 </span>            :                    SourceLine sourceLine,
+<span class="lineNum">      97 </span>            :                    const std::string &amp;message )
+<span class="lineNum">      98 </span>            : {
+<span class="lineNum">      99 </span><span class="lineCov">         44 :   if ( !assertion_traits&lt;T&gt;::equal(expected,actual) ) // lazy toString conversion...</span>
+<span class="lineNum">     100 </span>            :   {
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     Asserter::failNotEqual( assertion_traits&lt;T&gt;::toString(expected),</span>
+<span class="lineNum">     102 </span>            :                             assertion_traits&lt;T&gt;::toString(actual),
+<span class="lineNum">     103 </span>            :                             sourceLine,
+<span class="lineNum">     104 </span>            :                             message );
+<span class="lineNum">     105 </span>            :   }
+<span class="lineNum">     106 </span><span class="lineCov">         44 : }</span>
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            : /*! \brief (Implementation) Asserts that two double are equals given a tolerance.
+<span class="lineNum">     110 </span>            :  * Use CPPUNIT_ASSERT_DOUBLES_EQUAL instead of this function.
+<span class="lineNum">     111 </span>            :  * \sa Asserter::failNotEqual().
+<span class="lineNum">     112 </span>            :  * \sa CPPUNIT_ASSERT_DOUBLES_EQUAL for detailed semantic of the assertion.
+<span class="lineNum">     113 </span>            :  */
+<span class="lineNum">     114 </span>            : void CPPUNIT_API assertDoubleEquals( double expected,
+<span class="lineNum">     115 </span>            :                                      double actual,
+<span class="lineNum">     116 </span>            :                                      double delta,
+<span class="lineNum">     117 </span>            :                                      SourceLine sourceLine, 
+<span class="lineNum">     118 </span>            :                                      const std::string &amp;message );
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : /* A set of macros which allow us to get the line number
+<span class="lineNum">     122 </span>            :  * and file name at the point of an error.
+<span class="lineNum">     123 </span>            :  * Just goes to show that preprocessors do have some
+<span class="lineNum">     124 </span>            :  * redeeming qualities.
+<span class="lineNum">     125 </span>            :  */
+<span class="lineNum">     126 </span>            : #if CPPUNIT_HAVE_CPP_SOURCE_ANNOTATION
+<span class="lineNum">     127 </span>            : /** Assertions that a condition is \c true.
+<span class="lineNum">     128 </span>            :  * \ingroup Assertions
+<span class="lineNum">     129 </span>            :  */
+<span class="lineNum">     130 </span>            : #define CPPUNIT_ASSERT(condition)                                                 \
+<span class="lineNum">     131 </span>            :   ( CPPUNIT_NS::Asserter::failIf( !(condition),                                   \
+<span class="lineNum">     132 </span>            :                                  CPPUNIT_NS::Message( &quot;assertion failed&quot;,         \
+<span class="lineNum">     133 </span>            :                                                       &quot;Expression: &quot; #condition), \
+<span class="lineNum">     134 </span>            :                                  CPPUNIT_SOURCELINE() ) )
+<span class="lineNum">     135 </span>            : #else
+<span class="lineNum">     136 </span>            : #define CPPUNIT_ASSERT(condition)                                            \
+<span class="lineNum">     137 </span>            :   ( CPPUNIT_NS::Asserter::failIf( !(condition),                              \
+<span class="lineNum">     138 </span>            :                                   CPPUNIT_NS::Message( &quot;assertion failed&quot; ), \
+<span class="lineNum">     139 </span>            :                                   CPPUNIT_SOURCELINE() ) )
+<span class="lineNum">     140 </span>            : #endif
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            : /** Assertion with a user specified message.
+<span class="lineNum">     143 </span>            :  * \ingroup Assertions
+<span class="lineNum">     144 </span>            :  * \param message Message reported in diagnostic if \a condition evaluates
+<span class="lineNum">     145 </span>            :  *                to \c false.
+<span class="lineNum">     146 </span>            :  * \param condition If this condition evaluates to \c false then the
+<span class="lineNum">     147 </span>            :  *                  test failed.
+<span class="lineNum">     148 </span>            :  */
+<span class="lineNum">     149 </span>            : #define CPPUNIT_ASSERT_MESSAGE(message,condition)                          \
+<span class="lineNum">     150 </span>            :   ( CPPUNIT_NS::Asserter::failIf( !(condition),                            \
+<span class="lineNum">     151 </span>            :                                   CPPUNIT_NS::Message( &quot;assertion failed&quot;, \
+<span class="lineNum">     152 </span>            :                                                        &quot;Expression: &quot;      \
+<span class="lineNum">     153 </span>            :                                                        #condition,         \
+<span class="lineNum">     154 </span>            :                                                        message ),          \
+<span class="lineNum">     155 </span>            :                                   CPPUNIT_SOURCELINE() ) )
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : /** Fails with the specified message.
+<span class="lineNum">     158 </span>            :  * \ingroup Assertions
+<span class="lineNum">     159 </span>            :  * \param message Message reported in diagnostic.
+<span class="lineNum">     160 </span>            :  */
+<span class="lineNum">     161 </span>            : #define CPPUNIT_FAIL( message )                                         \
+<span class="lineNum">     162 </span>            :   ( CPPUNIT_NS::Asserter::fail( CPPUNIT_NS::Message( &quot;forced failure&quot;,  \
+<span class="lineNum">     163 </span>            :                                                      message ),         \
+<span class="lineNum">     164 </span>            :                                 CPPUNIT_SOURCELINE() ) )
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            : #ifdef CPPUNIT_ENABLE_SOURCELINE_DEPRECATED
+<span class="lineNum">     167 </span>            : /// Generalized macro for primitive value comparisons
+<span class="lineNum">     168 </span>            : #define CPPUNIT_ASSERT_EQUAL(expected,actual)                     \
+<span class="lineNum">     169 </span>            :   ( CPPUNIT_NS::assertEquals( (expected),             \
+<span class="lineNum">     170 </span>            :                               (actual),               \
+<span class="lineNum">     171 </span>            :                               __LINE__, __FILE__ ) )
+<span class="lineNum">     172 </span>            : #else
+<span class="lineNum">     173 </span>            : /** Asserts that two values are equals.
+<span class="lineNum">     174 </span>            :  * \ingroup Assertions
+<span class="lineNum">     175 </span>            :  *
+<span class="lineNum">     176 </span>            :  * Equality and string representation can be defined with
+<span class="lineNum">     177 </span>            :  * an appropriate CppUnit::assertion_traits class.
+<span class="lineNum">     178 </span>            :  *
+<span class="lineNum">     179 </span>            :  * A diagnostic is printed if actual and expected values disagree.
+<span class="lineNum">     180 </span>            :  *
+<span class="lineNum">     181 </span>            :  * Requirement for \a expected and \a actual parameters:
+<span class="lineNum">     182 </span>            :  * - They are exactly of the same type
+<span class="lineNum">     183 </span>            :  * - They are serializable into a std::strstream using operator &lt;&lt;.
+<span class="lineNum">     184 </span>            :  * - They can be compared using operator ==. 
+<span class="lineNum">     185 </span>            :  *
+<span class="lineNum">     186 </span>            :  * The last two requirements (serialization and comparison) can be
+<span class="lineNum">     187 </span>            :  * removed by specializing the CppUnit::assertion_traits.
+<span class="lineNum">     188 </span>            :  */
+<span class="lineNum">     189 </span>            : #define CPPUNIT_ASSERT_EQUAL(expected,actual)          \
+<span class="lineNum">     190 </span>            :   ( CPPUNIT_NS::assertEquals( (expected),              \
+<span class="lineNum">     191 </span>            :                               (actual),                \
+<span class="lineNum">     192 </span>            :                               CPPUNIT_SOURCELINE(),    \
+<span class="lineNum">     193 </span>            :                               &quot;&quot; ) )
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span>            : /** Asserts that two values are equals, provides additional message on failure.
+<span class="lineNum">     196 </span>            :  * \ingroup Assertions
+<span class="lineNum">     197 </span>            :  *
+<span class="lineNum">     198 </span>            :  * Equality and string representation can be defined with
+<span class="lineNum">     199 </span>            :  * an appropriate assertion_traits class.
+<span class="lineNum">     200 </span>            :  *
+<span class="lineNum">     201 </span>            :  * A diagnostic is printed if actual and expected values disagree.
+<span class="lineNum">     202 </span>            :  * The message is printed in addition to the expected and actual value
+<span class="lineNum">     203 </span>            :  * to provide additional information.
+<span class="lineNum">     204 </span>            :  *
+<span class="lineNum">     205 </span>            :  * Requirement for \a expected and \a actual parameters:
+<span class="lineNum">     206 </span>            :  * - They are exactly of the same type
+<span class="lineNum">     207 </span>            :  * - They are serializable into a std::strstream using operator &lt;&lt;.
+<span class="lineNum">     208 </span>            :  * - They can be compared using operator ==. 
+<span class="lineNum">     209 </span>            :  *
+<span class="lineNum">     210 </span>            :  * The last two requirements (serialization and comparison) can be
+<span class="lineNum">     211 </span>            :  * removed by specializing the CppUnit::assertion_traits.
+<span class="lineNum">     212 </span>            :  */
+<span class="lineNum">     213 </span>            : #define CPPUNIT_ASSERT_EQUAL_MESSAGE(message,expected,actual)      \
+<span class="lineNum">     214 </span>            :   ( CPPUNIT_NS::assertEquals( (expected),              \
+<span class="lineNum">     215 </span>            :                               (actual),                \
+<span class="lineNum">     216 </span>            :                               CPPUNIT_SOURCELINE(),    \
+<span class="lineNum">     217 </span>            :                               (message) ) )
+<span class="lineNum">     218 </span>            : #endif
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            : /*! \brief Macro for primitive double value comparisons. 
+<span class="lineNum">     221 </span>            :  * \ingroup Assertions
+<span class="lineNum">     222 </span>            :  *
+<span class="lineNum">     223 </span>            :  * The assertion pass if both expected and actual are finite and
+<span class="lineNum">     224 </span>            :  * \c fabs( \c expected - \c actual ) &lt;= \c delta.
+<span class="lineNum">     225 </span>            :  * If either \c expected or actual are infinite (+/- inf), the 
+<span class="lineNum">     226 </span>            :  * assertion pass if \c expected == \c actual.
+<span class="lineNum">     227 </span>            :  * If either \c expected or \c actual is a NaN (not a number), then
+<span class="lineNum">     228 </span>            :  * the assertion fails.
+<span class="lineNum">     229 </span>            :  */
+<span class="lineNum">     230 </span>            : #define CPPUNIT_ASSERT_DOUBLES_EQUAL(expected,actual,delta)        \
+<span class="lineNum">     231 </span>            :   ( CPPUNIT_NS::assertDoubleEquals( (expected),            \
+<span class="lineNum">     232 </span>            :                                     (actual),              \
+<span class="lineNum">     233 </span>            :                                     (delta),               \
+<span class="lineNum">     234 </span>            :                                     CPPUNIT_SOURCELINE(),  \
+<span class="lineNum">     235 </span>            :                                     &quot;&quot; ) )
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : 
+<span class="lineNum">     238 </span>            : /*! \brief Macro for primitive double value comparisons, setting a 
+<span class="lineNum">     239 </span>            :  * user-supplied message in case of failure. 
+<span class="lineNum">     240 </span>            :  * \ingroup Assertions
+<span class="lineNum">     241 </span>            :  * \sa CPPUNIT_ASSERT_DOUBLES_EQUAL for detailed semantic of the assertion.
+<span class="lineNum">     242 </span>            :  */
+<span class="lineNum">     243 </span>            : #define CPPUNIT_ASSERT_DOUBLES_EQUAL_MESSAGE(message,expected,actual,delta)  \
+<span class="lineNum">     244 </span>            :   ( CPPUNIT_NS::assertDoubleEquals( (expected),            \
+<span class="lineNum">     245 </span>            :                                     (actual),              \
+<span class="lineNum">     246 </span>            :                                     (delta),               \
+<span class="lineNum">     247 </span>            :                                     CPPUNIT_SOURCELINE(),  \
+<span class="lineNum">     248 </span>            :                                     (message) ) )
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            : /** Asserts that the given expression throws an exception of the specified type. 
+<span class="lineNum">     252 </span>            :  * \ingroup Assertions
+<span class="lineNum">     253 </span>            :  * Example of usage:
+<span class="lineNum">     254 </span>            :  * \code
+<span class="lineNum">     255 </span>            :  *   std::vector&lt;int&gt; v;
+<span class="lineNum">     256 </span>            :  *  CPPUNIT_ASSERT_THROW( v.at( 50 ), std::out_of_range );
+<span class="lineNum">     257 </span>            :  * \endcode
+<span class="lineNum">     258 </span>            :  */
+<span class="lineNum">     259 </span>            : # define CPPUNIT_ASSERT_THROW( expression, ExceptionType )              \
+<span class="lineNum">     260 </span>            :    CPPUNIT_ASSERT_THROW_MESSAGE( CPPUNIT_NS::AdditionalMessage(),       \
+<span class="lineNum">     261 </span>            :                                  expression,                            \
+<span class="lineNum">     262 </span>            :                                  ExceptionType )
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            : // implementation detail
+<span class="lineNum">     266 </span>            : #if CPPUNIT_USE_TYPEINFO_NAME
+<span class="lineNum">     267 </span>            : #define CPPUNIT_EXTRACT_EXCEPTION_TYPE_( exception, no_rtti_message ) \
+<span class="lineNum">     268 </span>            :    CPPUNIT_NS::TypeInfoHelper::getClassName( typeid(exception) )
+<span class="lineNum">     269 </span>            : #else
+<span class="lineNum">     270 </span>            : #define CPPUNIT_EXTRACT_EXCEPTION_TYPE_( exception, no_rtti_message ) \
+<span class="lineNum">     271 </span>            :    std::string( no_rtti_message )
+<span class="lineNum">     272 </span>            : #endif // CPPUNIT_USE_TYPEINFO_NAME
+<span class="lineNum">     273 </span>            : 
+<span class="lineNum">     274 </span>            : // implementation detail
+<span class="lineNum">     275 </span>            : #define CPPUNIT_GET_PARAMETER_STRING( parameter ) #parameter
+<span class="lineNum">     276 </span>            : 
+<span class="lineNum">     277 </span>            : /** Asserts that the given expression throws an exception of the specified type, 
+<span class="lineNum">     278 </span>            :  * setting a user supplied message in case of failure. 
+<span class="lineNum">     279 </span>            :  * \ingroup Assertions
+<span class="lineNum">     280 </span>            :  * Example of usage:
+<span class="lineNum">     281 </span>            :  * \code
+<span class="lineNum">     282 </span>            :  *   std::vector&lt;int&gt; v;
+<span class="lineNum">     283 </span>            :  *  CPPUNIT_ASSERT_THROW_MESSAGE( &quot;- std::vector&lt;int&gt; v;&quot;, v.at( 50 ), std::out_of_range );
+<span class="lineNum">     284 </span>            :  * \endcode
+<span class="lineNum">     285 </span>            :  */
+<span class="lineNum">     286 </span>            : # define CPPUNIT_ASSERT_THROW_MESSAGE( message, expression, ExceptionType )   \
+<span class="lineNum">     287 </span>            :    do {                                                                       \
+<span class="lineNum">     288 </span>            :       bool cpputCorrectExceptionThrown_ = false;                              \
+<span class="lineNum">     289 </span>            :       CPPUNIT_NS::Message cpputMsg_( &quot;expected exception not thrown&quot; );       \
+<span class="lineNum">     290 </span>            :       cpputMsg_.addDetail( message );                                         \
+<span class="lineNum">     291 </span>            :       cpputMsg_.addDetail( &quot;Expected: &quot;                                       \
+<span class="lineNum">     292 </span>            :                            CPPUNIT_GET_PARAMETER_STRING( ExceptionType ) );   \
+<span class="lineNum">     293 </span>            :                                                                               \
+<span class="lineNum">     294 </span>            :       try {                                                                   \
+<span class="lineNum">     295 </span>            :          expression;                                                          \
+<span class="lineNum">     296 </span>            :       } catch ( const ExceptionType &amp; ) {                                     \
+<span class="lineNum">     297 </span>            :          cpputCorrectExceptionThrown_ = true;                                 \
+<span class="lineNum">     298 </span>            :       } catch ( const std::exception &amp;e) {                                    \
+<span class="lineNum">     299 </span>            :          cpputMsg_.addDetail( &quot;Actual  : &quot; +                                  \
+<span class="lineNum">     300 </span>            :                               CPPUNIT_EXTRACT_EXCEPTION_TYPE_( e,             \
+<span class="lineNum">     301 </span>            :                                           &quot;std::exception or derived&quot;) );     \
+<span class="lineNum">     302 </span>            :          cpputMsg_.addDetail( std::string(&quot;What()  : &quot;) + e.what() );         \
+<span class="lineNum">     303 </span>            :       } catch ( ... ) {                                                       \
+<span class="lineNum">     304 </span>            :          cpputMsg_.addDetail( &quot;Actual  : unknown.&quot;);                          \
+<span class="lineNum">     305 </span>            :       }                                                                       \
+<span class="lineNum">     306 </span>            :                                                                               \
+<span class="lineNum">     307 </span>            :       if ( cpputCorrectExceptionThrown_ )                                     \
+<span class="lineNum">     308 </span>            :          break;                                                               \
+<span class="lineNum">     309 </span>            :                                                                               \
+<span class="lineNum">     310 </span>            :       CPPUNIT_NS::Asserter::fail( cpputMsg_,                                  \
+<span class="lineNum">     311 </span>            :                                   CPPUNIT_SOURCELINE() );                     \
+<span class="lineNum">     312 </span>            :    } while ( false )
+<span class="lineNum">     313 </span>            : 
+<span class="lineNum">     314 </span>            : 
+<span class="lineNum">     315 </span>            : /** Asserts that the given expression does not throw any exceptions.
+<span class="lineNum">     316 </span>            :  * \ingroup Assertions
+<span class="lineNum">     317 </span>            :  * Example of usage:
+<span class="lineNum">     318 </span>            :  * \code
+<span class="lineNum">     319 </span>            :  *   std::vector&lt;int&gt; v;
+<span class="lineNum">     320 </span>            :  *   v.push_back( 10 );
+<span class="lineNum">     321 </span>            :  *  CPPUNIT_ASSERT_NO_THROW( v.at( 0 ) );
+<span class="lineNum">     322 </span>            :  * \endcode
+<span class="lineNum">     323 </span>            :  */
+<span class="lineNum">     324 </span>            : # define CPPUNIT_ASSERT_NO_THROW( expression )                             \
+<span class="lineNum">     325 </span>            :    CPPUNIT_ASSERT_NO_THROW_MESSAGE( CPPUNIT_NS::AdditionalMessage(),       \
+<span class="lineNum">     326 </span>            :                                     expression )
+<span class="lineNum">     327 </span>            : 
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            : /** Asserts that the given expression does not throw any exceptions, 
+<span class="lineNum">     330 </span>            :  * setting a user supplied message in case of failure. 
+<span class="lineNum">     331 </span>            :  * \ingroup Assertions
+<span class="lineNum">     332 </span>            :  * Example of usage:
+<span class="lineNum">     333 </span>            :  * \code
+<span class="lineNum">     334 </span>            :  *   std::vector&lt;int&gt; v;
+<span class="lineNum">     335 </span>            :  *   v.push_back( 10 );
+<span class="lineNum">     336 </span>            :  *  CPPUNIT_ASSERT_NO_THROW( &quot;std::vector&lt;int&gt; v;&quot;, v.at( 0 ) );
+<span class="lineNum">     337 </span>            :  * \endcode
+<span class="lineNum">     338 </span>            :  */
+<span class="lineNum">     339 </span>            : # define CPPUNIT_ASSERT_NO_THROW_MESSAGE( message, expression )               \
+<span class="lineNum">     340 </span>            :    do {                                                                       \
+<span class="lineNum">     341 </span>            :       CPPUNIT_NS::Message cpputMsg_( &quot;unexpected exception caught&quot; );         \
+<span class="lineNum">     342 </span>            :       cpputMsg_.addDetail( message );                                         \
+<span class="lineNum">     343 </span>            :                                                                               \
+<span class="lineNum">     344 </span>            :       try {                                                                   \
+<span class="lineNum">     345 </span>            :          expression;                                                          \
+<span class="lineNum">     346 </span>            :       } catch ( const std::exception &amp;e ) {                                   \
+<span class="lineNum">     347 </span>            :          cpputMsg_.addDetail( &quot;Caught: &quot; +                                    \
+<span class="lineNum">     348 </span>            :                               CPPUNIT_EXTRACT_EXCEPTION_TYPE_( e,             \
+<span class="lineNum">     349 </span>            :                                           &quot;std::exception or derived&quot; ) );    \
+<span class="lineNum">     350 </span>            :          cpputMsg_.addDetail( std::string(&quot;What(): &quot;) + e.what() );           \
+<span class="lineNum">     351 </span>            :          CPPUNIT_NS::Asserter::fail( cpputMsg_,                               \
+<span class="lineNum">     352 </span>            :                                      CPPUNIT_SOURCELINE() );                  \
+<span class="lineNum">     353 </span>            :       } catch ( ... ) {                                                       \
+<span class="lineNum">     354 </span>            :          cpputMsg_.addDetail( &quot;Caught: unknown.&quot; );                           \
+<span class="lineNum">     355 </span>            :          CPPUNIT_NS::Asserter::fail( cpputMsg_,                               \
+<span class="lineNum">     356 </span>            :                                      CPPUNIT_SOURCELINE() );                  \
+<span class="lineNum">     357 </span>            :       }                                                                       \
+<span class="lineNum">     358 </span>            :    } while ( false )
+<span class="lineNum">     359 </span>            : 
+<span class="lineNum">     360 </span>            : 
+<span class="lineNum">     361 </span>            : /** Asserts that an assertion fail.
+<span class="lineNum">     362 </span>            :  * \ingroup Assertions
+<span class="lineNum">     363 </span>            :  * Use to test assertions.
+<span class="lineNum">     364 </span>            :  * Example of usage:
+<span class="lineNum">     365 </span>            :  * \code
+<span class="lineNum">     366 </span>            :  *   CPPUNIT_ASSERT_ASSERTION_FAIL( CPPUNIT_ASSERT( 1 == 2 ) );
+<span class="lineNum">     367 </span>            :  * \endcode
+<span class="lineNum">     368 </span>            :  */
+<span class="lineNum">     369 </span>            : # define CPPUNIT_ASSERT_ASSERTION_FAIL( assertion )                 \
+<span class="lineNum">     370 </span>            :    CPPUNIT_ASSERT_THROW( assertion, CPPUNIT_NS::Exception )
+<span class="lineNum">     371 </span>            : 
+<span class="lineNum">     372 </span>            : 
+<span class="lineNum">     373 </span>            : /** Asserts that an assertion fail, with a user-supplied message in 
+<span class="lineNum">     374 </span>            :  * case of error.
+<span class="lineNum">     375 </span>            :  * \ingroup Assertions
+<span class="lineNum">     376 </span>            :  * Use to test assertions.
+<span class="lineNum">     377 </span>            :  * Example of usage:
+<span class="lineNum">     378 </span>            :  * \code
+<span class="lineNum">     379 </span>            :  *   CPPUNIT_ASSERT_ASSERTION_FAIL_MESSAGE( &quot;1 == 2&quot;, CPPUNIT_ASSERT( 1 == 2 ) );
+<span class="lineNum">     380 </span>            :  * \endcode
+<span class="lineNum">     381 </span>            :  */
+<span class="lineNum">     382 </span>            : # define CPPUNIT_ASSERT_ASSERTION_FAIL_MESSAGE( message, assertion )    \
+<span class="lineNum">     383 </span>            :    CPPUNIT_ASSERT_THROW_MESSAGE( message, assertion, CPPUNIT_NS::Exception )
+<span class="lineNum">     384 </span>            : 
+<span class="lineNum">     385 </span>            : 
+<span class="lineNum">     386 </span>            : /** Asserts that an assertion pass.
+<span class="lineNum">     387 </span>            :  * \ingroup Assertions
+<span class="lineNum">     388 </span>            :  * Use to test assertions.
+<span class="lineNum">     389 </span>            :  * Example of usage:
+<span class="lineNum">     390 </span>            :  * \code
+<span class="lineNum">     391 </span>            :  *   CPPUNIT_ASSERT_ASSERTION_PASS( CPPUNIT_ASSERT( 1 == 1 ) );
+<span class="lineNum">     392 </span>            :  * \endcode
+<span class="lineNum">     393 </span>            :  */
+<span class="lineNum">     394 </span>            : # define CPPUNIT_ASSERT_ASSERTION_PASS( assertion )                 \
+<span class="lineNum">     395 </span>            :    CPPUNIT_ASSERT_NO_THROW( assertion )
+<span class="lineNum">     396 </span>            : 
+<span class="lineNum">     397 </span>            : 
+<span class="lineNum">     398 </span>            : /** Asserts that an assertion pass, with a user-supplied message in 
+<span class="lineNum">     399 </span>            :  * case of failure. 
+<span class="lineNum">     400 </span>            :  * \ingroup Assertions
+<span class="lineNum">     401 </span>            :  * Use to test assertions.
+<span class="lineNum">     402 </span>            :  * Example of usage:
+<span class="lineNum">     403 </span>            :  * \code
+<span class="lineNum">     404 </span>            :  *   CPPUNIT_ASSERT_ASSERTION_PASS_MESSAGE( &quot;1 != 1&quot;, CPPUNIT_ASSERT( 1 == 1 ) );
+<span class="lineNum">     405 </span>            :  * \endcode
+<span class="lineNum">     406 </span>            :  */
+<span class="lineNum">     407 </span>            : # define CPPUNIT_ASSERT_ASSERTION_PASS_MESSAGE( message, assertion )    \
+<span class="lineNum">     408 </span>            :    CPPUNIT_ASSERT_NO_THROW_MESSAGE( message, assertion )
+<span class="lineNum">     409 </span>            : 
+<span class="lineNum">     410 </span>            : 
+<span class="lineNum">     411 </span>            : 
+<span class="lineNum">     412 </span>            : 
+<span class="lineNum">     413 </span>            : // Backwards compatibility
+<span class="lineNum">     414 </span>            : 
+<span class="lineNum">     415 </span>            : #if CPPUNIT_ENABLE_NAKED_ASSERT
+<span class="lineNum">     416 </span>            : 
+<span class="lineNum">     417 </span>            : #undef assert
+<span class="lineNum">     418 </span>            : #define assert(c)                 CPPUNIT_ASSERT(c)
+<span class="lineNum">     419 </span>            : #define assertEqual(e,a)          CPPUNIT_ASSERT_EQUAL(e,a)
+<span class="lineNum">     420 </span>            : #define assertDoublesEqual(e,a,d) CPPUNIT_ASSERT_DOUBLES_EQUAL(e,a,d)
+<span class="lineNum">     421 </span>            : #define assertLongsEqual(e,a)     CPPUNIT_ASSERT_EQUAL(e,a)
+<span class="lineNum">     422 </span>            : 
+<span class="lineNum">     423 </span>            : #endif
+<span class="lineNum">     424 </span>            : 
+<span class="lineNum">     425 </span>            : 
+<span class="lineNum">     426 </span>            : CPPUNIT_NS_END
+<span class="lineNum">     427 </span>            : 
+<span class="lineNum">     428 </span>            : #endif  // CPPUNIT_TESTASSERT_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

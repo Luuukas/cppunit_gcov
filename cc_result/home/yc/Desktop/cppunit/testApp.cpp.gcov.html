@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - app.info - /home/yc/Desktop/cppunit/testApp.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">home/yc/Desktop/cppunit</a> - testApp.cpp<span style="font-size: 80%;"> (source / <a href="testApp.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntry">138</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-10-17 10:35:57</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;iostream&gt;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span>            : #include &lt;cppunit/TestRunner.h&gt;
+<span class="lineNum">       4 </span>            : #include &lt;cppunit/TestResult.h&gt;
+<span class="lineNum">       5 </span>            : #include &lt;cppunit/TestResultCollector.h&gt;
+<span class="lineNum">       6 </span>            : #include &lt;cppunit/extensions/HelperMacros.h&gt;
+<span class="lineNum">       7 </span>            : #include &lt;cppunit/BriefTestProgressListener.h&gt;
+<span class="lineNum">       8 </span>            : #include &lt;cppunit/extensions/TestFactoryRegistry.h&gt;
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : #include &quot;SaleMachine.h&quot;
+<span class="lineNum">      11 </span>            : 
+<a name="12"><span class="lineNum">      12 </span>            : using namespace std;</a>
+<span class="lineNum">      13 </span>            : 
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">         57 : class Test : public CPPUNIT_NS::TestCase</span></a>
+<span class="lineNum">      15 </span>            : {
+<span class="lineNum">      16 </span><span class="lineCov">          3 :     CPPUNIT_TEST_SUITE(Test);</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod1);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod2);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod3);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod4);</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod5);</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod6);</span>
+<span class="lineNum">      24 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod7);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod8);</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod9);</span>
+<span class="lineNum">      27 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod10);</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod11);</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod12);</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod13);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod14);</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod15);</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod16);</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod17);</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod18);</span>
+<a name="37"><span class="lineNum">      37 </span><span class="lineCov">          1 :     CPPUNIT_TEST(TestMethod19);</span></a>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineCov">          2 :     CPPUNIT_TEST_SUITE_END();</span>
+<a name="40"><span class="lineNum">      40 </span>            : </a>
+<a name="41"><span class="lineNum">      41 </span>            : public:</a>
+<span class="lineNum">      42 </span><span class="lineCov">         19 :     void setUp(void) {}</span>
+<span class="lineNum">      43 </span><span class="lineCov">         19 :     void tearDown(void) {}</span>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : protected:
+<span class="lineNum">      46 </span>            :     void TestMethod1();
+<span class="lineNum">      47 </span>            :     void TestMethod2();
+<span class="lineNum">      48 </span>            :     void TestMethod3();
+<span class="lineNum">      49 </span>            :     void TestMethod4();
+<span class="lineNum">      50 </span>            :     void TestMethod5();
+<span class="lineNum">      51 </span>            :     void TestMethod6();
+<span class="lineNum">      52 </span>            :     void TestMethod7();
+<span class="lineNum">      53 </span>            :     void TestMethod8();
+<span class="lineNum">      54 </span>            :     void TestMethod9();
+<span class="lineNum">      55 </span>            :     void TestMethod10();
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            :     void TestMethod11();
+<span class="lineNum">      58 </span>            :     void TestMethod12();
+<span class="lineNum">      59 </span>            :     void TestMethod13();
+<span class="lineNum">      60 </span>            :     void TestMethod14();
+<span class="lineNum">      61 </span>            :     void TestMethod15();
+<span class="lineNum">      62 </span>            :     void TestMethod16();
+<span class="lineNum">      63 </span>            :     void TestMethod17();
+<span class="lineNum">      64 </span>            :     void TestMethod18();
+<span class="lineNum">      65 </span>            :     void TestMethod19();
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : private:
+<span class="lineNum">      68 </span>            :     string res[5] = {&quot;很抱歉，没有&quot;, &quot;请取走&quot;, &quot;拿好5元，请取走&quot;, &quot;没有零钱找，退您10元&quot;, &quot;错误指令！&quot;};
+<span class="lineNum">      69 </span>            :     SaleMachine sm;
+<span class="lineNum">      70 </span>            :     string drink;
+<a name="71"><span class="lineNum">      71 </span>            : };</a>
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span><span class="lineCov">          1 : void Test::TestMethod1()</span>
+<span class="lineNum">      74 </span>            : {
+<span class="lineNum">      75 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">          1 : void Test::TestMethod2()</span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     drink = &quot;beer&quot;;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      84 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[0] + drink);</span>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span><span class="lineCov">          1 : void Test::TestMethod3()</span>
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     drink = &quot;orange&quot;;</span>
+<span class="lineNum">      94 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[1] + drink);</span>
+<span class="lineNum">      99 </span>            :     
+<span class="lineNum">     100 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[0] + drink);</span>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineCov">          1 : void Test::TestMethod4()</span>
+<span class="lineNum">     104 </span>            : {
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     drink = &quot;beer&quot;;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 11), res[4]);</span>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span><span class="lineCov">          1 : void Test::TestMethod5()</span>
+<span class="lineNum">     110 </span>            : {
+<span class="lineNum">     111 </span><span class="lineCov">          1 :     drink = &quot;beer&quot;;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     115 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     116 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[0] + drink);</span>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span><span class="lineCov">          1 : void Test::TestMethod6()</span>
+<span class="lineNum">     122 </span>            : {
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     drink = &quot;orange&quot;;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[0] + drink);</span>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineCov">          1 : void Test::TestMethod7()</span>
+<span class="lineNum">     134 </span>            : {
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[4]);</span>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span><span class="lineCov">          1 : void Test::TestMethod8()</span>
+<span class="lineNum">     140 </span>            : {
+<span class="lineNum">     141 </span><span class="lineCov">          1 :     drink = &quot;orange&quot;;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     drink = &quot;beer&quot;;</span>
+<span class="lineNum">     145 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     146 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[2] + drink);</span>
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 10), res[3]);</span>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span><span class="lineCov">          1 : void Test::TestMethod9()</span>
+<span class="lineNum">     153 </span>            : {
+<span class="lineNum">     154 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineCov">          1 : void Test::TestMethod10()</span>
+<span class="lineNum">     159 </span>            : {
+<span class="lineNum">     160 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span><span class="lineCov">          1 : void Test::TestMethod11()</span>
+<span class="lineNum">     165 </span>            : {
+<span class="lineNum">     166 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span><span class="lineCov">          1 : void Test::TestMethod12()</span>
+<span class="lineNum">     171 </span>            : {
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     173 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     175 </span>            : 
+<span class="lineNum">     176 </span><span class="lineCov">          1 : void Test::TestMethod13()</span>
+<span class="lineNum">     177 </span>            : {
+<span class="lineNum">     178 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span><span class="lineCov">          1 : void Test::TestMethod14()</span>
+<span class="lineNum">     183 </span>            : {
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span><span class="lineCov">          1 : void Test::TestMethod15()</span>
+<span class="lineNum">     189 </span>            : {
+<span class="lineNum">     190 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span><span class="lineCov">          1 : void Test::TestMethod16()</span>
+<span class="lineNum">     195 </span>            : {
+<span class="lineNum">     196 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span><span class="lineCov">          1 : void Test::TestMethod17()</span>
+<span class="lineNum">     201 </span>            : {
+<span class="lineNum">     202 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span><span class="lineCov">          1 : void Test::TestMethod18()</span>
+<span class="lineNum">     207 </span>            : {
+<span class="lineNum">     208 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     211 </span>            : 
+<span class="lineNum">     212 </span><span class="lineCov">          1 : void Test::TestMethod19()</span>
+<span class="lineNum">     213 </span>            : {
+<span class="lineNum">     214 </span><span class="lineCov">          1 :     drink = &quot;cola&quot;;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :     CPPUNIT_ASSERT_EQUAL(sm.sale(drink, 5), res[4]);</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     217 </span>            : 
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          1 : CPPUNIT_TEST_SUITE_REGISTRATION(Test);</span></a>
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span><span class="lineCov">          1 : int main(int argc, char **argv)</span>
+<span class="lineNum">     221 </span>            : {
+<span class="lineNum">     222 </span>            :     // Create the event manager and test controller
+<span class="lineNum">     223 </span><span class="lineCov">          2 :     CPPUNIT_NS::TestResult controller;</span>
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            :     // Add a listener that colllects test result
+<span class="lineNum">     226 </span><span class="lineCov">          2 :     CPPUNIT_NS::TestResultCollector result;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :     controller.addListener(&amp;result);</span>
+<span class="lineNum">     228 </span>            : 
+<span class="lineNum">     229 </span>            :     // Add a listener that print dots as test run.
+<span class="lineNum">     230 </span><span class="lineCov">          2 :     CPPUNIT_NS::BriefTestProgressListener progress;</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     controller.addListener(&amp;progress);</span>
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span>            :     // Add the top suite to the test runner
+<span class="lineNum">     234 </span><span class="lineCov">          2 :     CPPUNIT_NS::TestRunner runner;</span>
+<span class="lineNum">     235 </span><span class="lineCov">          1 :     runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());</span>
+<span class="lineNum">     236 </span><span class="lineCov">          1 :     runner.run(controller);</span>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :     return result.wasSuccessful() ? 0 : 1;</span>
+<span class="lineNum">     239 </span><span class="lineCov">          3 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
