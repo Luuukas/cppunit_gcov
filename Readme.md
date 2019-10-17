@@ -4,13 +4,13 @@
 
 1. [下载cppunit源码](https://sourceforge.net/projects/cppunit/files/cppunit/1.12.1/cppunit-1.12.1.tar.gz/download)
 
-2. 解压cppunit-1.12.1.tar.gz
+2. **解压cppunit-1.12.1.tar.gz**
 
-3. cd cppunit-1.12.1
+3. **cd cppunit-1.12.1**
 
-4. 运行 ./configure
+4. **运行 ./configure**
 
-   若出现如下报错
+   ***若出现如下报错***
 
    ```bash
    g++ -g -O2 -o .libs/DllPlugInTester DllPlugInTester.o CommandLineParser.o -ldl ../../src/cppunit/.libs/libcppunit.so -lm
@@ -19,13 +19,13 @@
    ../../src/cppunit/.libs/libcppunit.so: undefined reference to `dlclose'
    ```
 
-   运行 ./configure LDFLAGS='-ldl'
+   ***运行 ./configure LDFLAGS='-ldl'***
 
-5. make
+5. **make**
 
-6. make install
+6. **make install**
 
-7. 编写测试程序
+7. **编写测试程序**
 
    ```c++
    testApp.cpp
@@ -77,7 +77,7 @@
     }
    ```
    
-8. 编译、运行（两种方法）
+8. **编译、运行（两种方法）**
    
    (a) 链接静态库
    
@@ -102,6 +102,19 @@
    ```
 
 ### 编写待测试类
+
+***《软件测试——基于问题驱动模式》P123实验4 单元测试覆盖率分析实验***
+
+**类实现需求**
+
+```bash
+售货机只出售两种饮料：啤酒和橙汁（价格都是5元），只接收5元和10元的纸币。啤酒、橙汁和零钱都有初始值，这里设置为5。
+如果成功出售饮料，sale()返回”请取走啤酒“”请取走橙汁“。
+没有饮料，退回钱，sale()返回”很抱歉，没有啤酒“或”很抱歉，没有橙汁“。
+输出饮料，成功找钱，sale()返回”拿好5元，请取走啤酒“或”拿好5元，请取走橙汁“。
+没有零钱找，sale()返回”没有零钱找，退您10元“。
+输入不正确，sale()返回”错误指令！“。
+```
 
 **SaleMachine.h**
 
